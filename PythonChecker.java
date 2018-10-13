@@ -54,11 +54,12 @@ public class PythonChecker {
             List<String> allLines = Files.readAllLines(Paths.get(filename));
             
 			for (String line : allLines) {
+                // Eliminate all whitespaces before and after the string
+                line = StringUtils.trimToEmpty(line);
                 /*
                     Counting comments:
                     A single-line comment is started with "#",
                 */
-                line = StringUtils.trimToEmpty(line);
                 // If something like # ''' doesn't happen, it is not a comment; it is a string block
                 if (line.contains("'''") 
                     && StringUtils.countMatches(line, "'''") % 2 == 1 

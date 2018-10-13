@@ -46,7 +46,7 @@ public class MainChecker {
             The following commented code is for debugging purpose
         */
         // String filename = args[0];
-        // String filename = "testfiles/edge.py";
+        // String filename = "testfiles/input3.py";
         // String[] tokens = filename.split("\\.(?=[^\\.]+$)");
         // if(tokens[1].equals("py")) {
         //     PythonChecker pythonChecker = new PythonChecker();

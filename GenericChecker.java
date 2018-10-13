@@ -54,6 +54,8 @@ public class GenericChecker {
             List<String> allLines = Files.readAllLines(Paths.get(filename));
             
 			for (String line : allLines) {
+                // Eliminate all whitespaces before and after the string
+                line = StringUtils.trimToEmpty(line);
                 /*
                     Counting Single-line Comments:
                     A single-line comment is started with "//",
