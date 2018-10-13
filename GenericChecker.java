@@ -70,8 +70,8 @@ public class GenericChecker {
                 /*
                     Counting total lines of comments
                     It will start with a "/*" somewhere, and ends with its counterpart somewhere else,
-                    but the opening and closing tags should not be on the same line, 
-                    which is defined as a single-line comment
+                    The opening and closing tags can be on the same line according to the
+                    example in the requirement
                 */ 
                 {
                     if (this.startBlockComment(line) && !this.commentStart) 

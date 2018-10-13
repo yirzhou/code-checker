@@ -1,12 +1,10 @@
 '''
-#
-some text
-# not a comment
+ #Not a comment 
+ ###
+ TODO: This is not a TODO...
 '''
-
-''' # '''
 
 #Last single comment
 
 #Last block comment
-#ended here
+#TODO: ended here 

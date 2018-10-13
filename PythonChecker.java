@@ -91,10 +91,10 @@ public class PythonChecker {
                         
         
                         // If this is the end of the file and it marks a block of comment, increment the counter for comment blocks
-                        if(this.consecutiveCounter > 1 && line.equals(allLines.get(allLines.size() - 1))) {
+                        if(this.consecutiveCounter > 1 && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))) {
                             this.countBlockComments++;
                             this.consecutiveCounter = 0;
-                        } else if (this.consecutiveCounter == 1 && line.equals(allLines.get(allLines.size() - 1))) {
+                        } else if (this.consecutiveCounter == 1 && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))) {
                             this.consecutiveCounter = 0;
                             this.countSingleComments++;
                         }
