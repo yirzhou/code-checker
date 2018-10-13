@@ -25,7 +25,7 @@ import org.apache.commons.lang3.*;
 
 public class GenericChecker {
 
-    // Initializing all variables needed;
+    // Declare all member variables needed
     private int countLines;
     private int countTotalComments;
     private int countSingleComments;
