@@ -74,7 +74,7 @@ public class PythonChecker {
                         && this.isCommentSingleQuote(line) 
                         && this.tripleQuotesCounter % 2 == 0) {
 
-                        if (this.consecutiveCounter >= 0 && StringUtils.substringBefore(line, "#").equals(""))
+                        if (StringUtils.substringBefore(line, "#").equals(""))
                             this.consecutiveCounter++;
                         else if (!StringUtils.substringBefore(line, "#").equals("")) { 
                             if(this.consecutiveCounter == 1)

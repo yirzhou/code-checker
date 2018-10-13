@@ -31,7 +31,7 @@ public class GenericChecker {
     private int countSingleComments;
     private int countMultiComments;
     private int countBlockComments;
-    private int countTodos = 0;
+    private int countTodos;
     // Signal to detect if we are currently reading a part of a comment block
     private boolean commentStart;
 
@@ -185,3 +185,4 @@ public class GenericChecker {
         return false;
     }
 }
+
