@@ -42,9 +42,11 @@ public class MainChecker {
             }
         }
 
-        // The following comment is for debugging purpose
-        // // String filename = args[0];
-        // String filename = "no-comment.c";
+        /*
+            The following commented code is for debugging purpose
+        */
+        // String filename = args[0];
+        // String filename = "testfiles/edge.py";
         // String[] tokens = filename.split("\\.(?=[^\\.]+$)");
         // if(tokens[1].equals("py")) {
         //     PythonChecker pythonChecker = new PythonChecker();

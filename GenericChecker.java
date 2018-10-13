@@ -111,7 +111,9 @@ public class GenericChecker {
     }
 
 
-    //  Function to return the number of occurrences of an element in an array of strings
+    /*  
+        Function to return the number of occurrences of an element in an array of strings
+    */
     public int numberOfOccurrences(String[] arr, String element) {
         int count = 0;
         for(int i = 0; i < arr.length; ++i) {
@@ -120,8 +122,10 @@ public class GenericChecker {
         return count;
     }
 
-    // Function to determine if this is a single-line comment
-    // It will detect whether a "//" is in any double quote
+    /*
+        The function detects if the line is a single-line comment
+        It has to have at least one //, but # of " // "s should be less than # of //'s
+    */
     public boolean isSingleComment(String line) {
         if(line.contains("//") && StringUtils.substringsBetween(line, "\"", "\"") != null) {
             if(this.numberOfOccurrences(StringUtils.substringsBetween(line, "\"", "\""), "//") < StringUtils.countMatches(line, "//")) {
@@ -136,6 +140,9 @@ public class GenericChecker {
         return false;
     }
 
+    /*
+        The function scans if the string/line of code is a TODO: It cannot be in any double quote
+    */
     public boolean isTODO(String line) {
         if (this.isSingleComment(line) && line.contains("TODO")) {
             // If the comment doesn't contain any double quote, it is a TODO
@@ -166,6 +173,9 @@ public class GenericChecker {
         return false;
     }
 
+    /*
+        Returns true if this is the end of a block comment
+    */
     public boolean endBlockComment(String line, boolean started) {
         if (line.contains("*/") && started)
             return true;

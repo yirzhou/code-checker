@@ -58,24 +58,37 @@ public class PythonChecker {
                     Counting comments:
                     A single-line comment is started with "#",
                 */
-
+                line = StringUtils.trimToEmpty(line);
                 // If something like # ''' doesn't happen, it is not a comment; it is a string block
                 if (line.contains("'''") 
-                    && StringUtils.countMatches(line, "'''") == 1 
+                    && StringUtils.countMatches(line, "'''") % 2 == 1 
                     && !StringUtils.substringBefore(line, "'''").contains("#")) {
                         this.tripleQuotesCounter++;
                 }                 
 
                 { 
                     // This excludes with '#' and "#"
+                    // Meaning that this line contains a comment
                     if (this.isCommentDoubleQuote(line) 
                         && this.isCommentSingleQuote(line) 
                         && this.tripleQuotesCounter % 2 == 0) {
 
-                        if (this.consecutiveCounter >= 0)
+                        if (this.consecutiveCounter >= 0 && StringUtils.substringBefore(line, "#").equals(""))
                             this.consecutiveCounter++;
-                        this.countTotalComments++;
+                        else if (!StringUtils.substringBefore(line, "#").equals("")) { 
+                            if(this.consecutiveCounter == 1)
+                                this.countSingleComments++;
+                            else if(this.consecutiveCounter > 1)
+                                this.countBlockComments++;
+                            
 
+                            this.countSingleComments++;
+                            this.consecutiveCounter = 0;
+                        }
+
+                        this.countTotalComments++;
+                        
+        
                         // If this is the end of the file and it marks a block of comment, increment the counter for comment blocks
                         if(this.consecutiveCounter > 1 && line.equals(allLines.get(allLines.size() - 1))) {
                             this.countBlockComments++;
@@ -134,7 +147,11 @@ public class PythonChecker {
         return count;
     }
 
-    // Function to determine if this is a single-line comment
+    /*
+        The following three functions detects if the line is a comment
+        The # char cannot be in any ' ', " ", or ''' '''
+        But the line can start with a #, which is still a comment
+    */
     public boolean isCommentDoubleQuote(String line) {
         if(!line.contains("#"))
             return false;

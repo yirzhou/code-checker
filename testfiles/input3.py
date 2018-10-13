@@ -15,7 +15,7 @@ while True:
         input() # For ENTER. Use raw_input() if you are running python 2.x instead of input()
         starttime = time.time()
         print('Started')
-    except KeyboardInterrupt:
+    except KeyboardInterrupt: 
         print('Stopped')
         endtime = time.time()
         print('Total Time:', round(endtime - starttime, 2),'secs')
