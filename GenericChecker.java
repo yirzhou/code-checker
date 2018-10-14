@@ -73,7 +73,7 @@ public class GenericChecker {
                     The opening and closing tags can be on the same line according to the
                     example in the requirement
                 */ 
-                {
+                {   
                     if (this.startBlockComment(line) && !this.commentStart) 
                         this.commentStart = true;
                     if (this.commentStart)
@@ -143,12 +143,12 @@ public class GenericChecker {
     }
 
     /*
-        The function scans if the string/line of code is a TODO: It cannot be in any double quote
+        The function scans if the string/line of code is a "TODO": It cannot be in any double quote
     */
     public boolean isTODO(String line) {
         if (this.isSingleComment(line) && line.contains("TODO")) {
-            // If the comment doesn't contain any double quote, it is a TODO
-            // Else, count the occurrences of TODOs
+            // If the comment doesn't contain any double quote, it is a "TODO"
+            // Else, count the occurrences of "TODO"s
             if (StringUtils.substringsBetween(line, "\"", "\"") == null)
                 return true;
             else if (this.numberOfOccurrences(StringUtils.substringsBetween(line, "\"", "\""), "TODO") < StringUtils.countMatches(line, "TODO")) {
@@ -185,4 +185,3 @@ public class GenericChecker {
         return false;
     }
 }
-

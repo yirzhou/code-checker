@@ -45,6 +45,7 @@ public class MainChecker {
         /*
             The following commented code is for debugging purpose
         */
+        
         // String filename = args[0];
         // String filename = "testfiles/input3.py";
         // String[] tokens = filename.split("\\.(?=[^\\.]+$)");

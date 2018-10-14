@@ -11,5 +11,5 @@ Just a bunch of comments*/
 
 // This is not a "TODO"
 
-/* Also not a "TODO"
+/* a weird block comment
 */

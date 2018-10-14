@@ -29,6 +29,8 @@ This is a block of comment although
 //
 */
 
+// TODO: Don't think C++ has TODOs but just complete this assignment!
+
 #ifndef QUADRATIC_HASH_TABLE_H
 #define QUADRATIC_HASH_TABLE_H
 
