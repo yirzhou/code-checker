@@ -1,6 +1,6 @@
 # Code Checker
 
-> An automated tool that scans a code of file and returns useful information
+> An automated tool that scans a code of file and returns useful information regarding the lines of code!
 
 ## Prerequisites
 
