@@ -47,11 +47,12 @@ public class GenericChecker {
     }
 
     // The core function that does the file checking
+    
     public void CheckFile(String filename) {
         // The following code counts the # lines and store them into a list
         try {
             // "allLines" stores all strings line by line in a list
-            List<String> allLines = Files.readAllLines(Paths.get(filename));
+            List<String> allLines = Files.readAllLines(Paths.get(filename));  
             
 			for (String line : allLines) {
                 // Eliminate all whitespaces before and after the string
