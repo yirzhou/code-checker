@@ -50,10 +50,12 @@ public class PythonChecker {
     public void CheckFile(String filename) {
         // The following code counts the # lines and store them into a list
         try {
+            int count = 0;
             // "allLines" stores all strings line by line in a list
             List<String> allLines = Files.readAllLines(Paths.get(filename));
             
 			for (String line : allLines) {
+                count++;
                 // Eliminate all whitespaces before and after the string
                 line = StringUtils.trimToEmpty(line);
                 /*
@@ -91,10 +93,14 @@ public class PythonChecker {
                         
         
                         // If this is the end of the file and it marks a block of comment, increment the counter for comment blocks
-                        if(this.consecutiveCounter > 1 && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))) {
+                        if(this.consecutiveCounter > 1 
+                            && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))
+                            && count == allLines.size()) {
                             this.countBlockComments++;
                             this.consecutiveCounter = 0;
-                        } else if (this.consecutiveCounter == 1 && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))) {
+                        } else if (this.consecutiveCounter == 1 
+                            && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))
+                            && count == allLines.size()) {
                             this.countSingleComments++;
                             this.consecutiveCounter = 0;       
                         }

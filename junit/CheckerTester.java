@@ -57,10 +57,10 @@ public class CheckerTester {
         String[] arr = {" # ", "awesome", "# two hashtags #", ""};
         assertEquals(3, pythonCheckerTest.numberOfOccurrences(arr, "#"));
 
-        // Test 10: Test numOfOccurrences()
-        System.out.println("Testing: numOfOccurrences() without #");
-        String[] arr_2 = {" nothing ", "awesome", "lorem ipsum", ""};
-        assertEquals(0, pythonCheckerTest.numberOfOccurrences(arr_2, "#"));
+        // Test 10: edge3.py
+        System.out.println("Testing edge2.py...");
+        int[] output_4 = {3, 3, 0, 3, 1, 0};
+        assertArrayEquals(output_4, pythonCheckerTest.CheckFile("../testfiles/edge3.py"));
 
 
 
