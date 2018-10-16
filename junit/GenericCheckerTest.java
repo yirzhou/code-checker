@@ -23,7 +23,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import org.apache.commons.lang3.*;
 
-public class GenericChecker {
+public class GenericCheckerTest {
 
     // Declare all member variables needed
     private int countLines;
@@ -36,7 +36,7 @@ public class GenericChecker {
     private boolean commentStart;
 
     // Constructor
-    public GenericChecker() {
+    public GenericCheckerTest() {
         this.countLines = 0;
         this.countTotalComments = 0;
         this.countSingleComments = 0;
@@ -47,7 +47,8 @@ public class GenericChecker {
     }
 
     // The core function that does the file checking
-    public void CheckFile(String filename) {
+    public int[] CheckFile(String filename) {
+        int[] values = new int[6];
         // The following code counts the # lines and store them into a list
         try {
             // "allLines" stores all strings line by line in a list
@@ -101,17 +102,26 @@ public class GenericChecker {
             this.countLines = allLines.size();
             this.countMultiComments = this.countTotalComments - this.countSingleComments;
 
+            /*
             System.out.println("Total # of lines: " + this.countLines);
             System.out.println("Total # of comment lines: " + this.countTotalComments);
             System.out.println("Total # of single line comments: " + this.countSingleComments);
             System.out.println("Total # of comment lines within block comments: " + this.countMultiComments);
             System.out.println("Total # of block line comments: " + this.countBlockComments);
             System.out.println("Total # of TODO's: " + this.countTodos);
-
+            */
+            
+            values[0] = this.countLines;
+            values[1] = this.countTotalComments;
+            values[2] = this.countSingleComments;
+            values[3] = this.countMultiComments;
+            values[4] = this.countBlockComments;
+            values[5] = this.countTodos;  
             this.clear();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+        }
+        return values;
     }
 
 

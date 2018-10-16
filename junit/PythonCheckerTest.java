@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import org.apache.commons.lang3.*;
 
-public class PythonChecker {
+public class PythonCheckerTest {
 
     // Declare all member variables needed
     private int countLines;
@@ -35,7 +35,7 @@ public class PythonChecker {
     private int tripleQuotesCounter;
 
     // Constructor
-    public PythonChecker() {
+    public PythonCheckerTest() {
         this.countLines = 0;
         this.countTotalComments = 0;
         this.countSingleComments = 0;
@@ -47,7 +47,8 @@ public class PythonChecker {
     }
 
     // The core function that does the file checking
-    public void CheckFile(String filename) {
+    public int[] CheckFile(String filename) {
+        int[] values = new int[6];
         // The following code counts the # lines and store them into a list
         try {
             // "allLines" stores all strings line by line in a list
@@ -95,8 +96,8 @@ public class PythonChecker {
                             this.countBlockComments++;
                             this.consecutiveCounter = 0;
                         } else if (this.consecutiveCounter == 1 && line.equals(StringUtils.trimToEmpty(allLines.get(allLines.size() - 1)))) {
+                            this.consecutiveCounter = 0;
                             this.countSingleComments++;
-                            this.consecutiveCounter = 0;       
                         }
                     
                         // This deals with # as a part of a string block, where I should do nothing because it's not a comment
@@ -127,15 +128,26 @@ public class PythonChecker {
             this.countLines = allLines.size();
             this.countMultiComments = this.countTotalComments - this.countSingleComments;
 
+            /*
             System.out.println("Total # of lines: " + this.countLines);
             System.out.println("Total # of comment lines: " + this.countTotalComments);
             System.out.println("Total # of single line comments: " + this.countSingleComments);
             System.out.println("Total # of comment lines within block comments: " + this.countMultiComments);
             System.out.println("Total # of block line comments: " + this.countBlockComments);
             System.out.println("Total # of TODO's: " + this.countTodos);
+            */
+            
+            values[0] = this.countLines;
+            values[1] = this.countTotalComments;
+            values[2] = this.countSingleComments;
+            values[3] = this.countMultiComments;
+            values[4] = this.countBlockComments;
+            values[5] = this.countTodos;  
+            this.clear();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+        }
+        return values;
     }
 
 
