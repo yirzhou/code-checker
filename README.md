@@ -5,6 +5,8 @@
 ## Prerequisites
 
 * Java SDK
+* JUnit
+* Apache Commons
 * Jenkins
 
 ## What Does It Do?
